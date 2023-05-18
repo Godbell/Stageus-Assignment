@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* body 기본 margin, padding 제거 */
+    margin: 0;
+    padding: 0;
+
+    background-color: #0F0F0F;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #00000000;
+}
+
+::-webkit-scrollbar-handle {
+    border-radius: 10px;
+    background: #FFFFFF;
+}

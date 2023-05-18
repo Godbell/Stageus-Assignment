@@ -1,0 +1,142 @@
+/* input 기본 border 제거 */
+input {
+    border: 0;
+}
+
+/* 검색창을 위해 focus 상태 입력창 outline 제거*/
+input:focus {
+    outline: none;
+}
+
+/* button 기본값 normalize */
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+}
+
+header {
+    position: fixed;
+    /* 
+        flex 사용 중앙 정렬
+        margin을 이용한 방법보다 간편/직관적
+    */
+    display: flex;
+    justify-content: space-between;
+    background-color: #0F0F0F;
+    align-items: center;
+
+    /* margin 대체 */
+    gap: 10%;
+
+    width: 100%;
+    height: 55px;
+
+    padding-left: 10px;
+    padding-right: 30px;
+    z-index: 1;
+}
+
+#logo {
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.circular-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /*
+        원형 만들기
+        header 높이 조절하다 보니 고정값이면 계속 수정해줘야 해서 height 100%
+    */
+    border-radius: 50%;
+    height: 100%;
+    aspect-ratio: 1;
+    
+    overflow: hidden;
+}
+
+#searchbar {
+    display: flex;
+    /*border-radius: 40px;
+
+    /* HSL: 색채 채도 명도 */
+    height: 80%;
+    width: 100%;
+}
+
+#search-button {
+    /* 검색 버튼 돋보기 아이콘 중앙 정렬*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #FFFFFF14;
+    width: 70px;
+
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 1px solid hsl(0, 0%, 18.82%);
+    border-left: 0px
+}
+
+#search-button-img {
+    width: 20px;
+    height: 20px;
+}
+
+#search-text {
+    padding-left: 10px;
+    background-color: transparent;
+    color: #FFFFFFE0;
+
+    width: 100%;
+    
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border: 1px solid hsl(0, 0%, 18.82%);
+}
+
+#search-text:focus {
+    border: 1px solid #1C62B9;
+}
+
+.searchbar-elem {
+    height: 100%;
+}
+
+.button-img {
+    display: block;
+    width: 23px;
+    height: 23px;
+}
+
+#profile {
+    height: 60%;
+    margin-left: 20px;
+}
+
+#profile-img {
+    height: 100%;
+}
+
+.top-section {
+    /* 섹션별 중앙 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 80%;
+}
+
+#top-section-middle {
+    /* 검색바 최대크기지정, flex box 사이 공간 없을 때부터 줄어들도록
+    width 100%로 설정 */
+    width: 100%;
+    max-width: 500px;
+}

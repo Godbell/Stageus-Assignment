@@ -1,0 +1,35 @@
+nav {
+    position: fixed;
+    top: 55px;
+    width: 68px;
+    height: 100%;
+}
+
+.side-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 7px;
+    text-align: center;
+    height: 80px;
+
+    padding: 2px;
+} 
+
+.side-button-content {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.side-button-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
