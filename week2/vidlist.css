@@ -30,7 +30,7 @@ article {
     border-radius: 10px;
 }
 
-.details {
+.metadata {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -38,7 +38,7 @@ article {
     margin-top: 10px;
 }
 
-.details-left {
+.metadata-left {
     display: flex;
 }
 
@@ -50,10 +50,26 @@ article {
     margin-right: 10px;
 }
 
+.vid-info-container {
+    vertical-align: baseline;
+}
+
+.vid-info {
+    color: #AAAAAA;
+}
+
+.separator {
+    color: #AAAAAA;
+}
+
+.block {
+    display: block;
+}
+
 .vid-title {
     color: white;
-    font-size: 15px;
-    vertical-align: baseline;
+    font-size: 17px;
+    
     padding-right: 10px;
     width: 100%;
 
