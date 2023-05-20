@@ -11,14 +11,15 @@ section {
     gap: 10px;
     flex-wrap: wrap;
 
-    position: relative;
     max-width: 2500px;
 }
 
 article {
     /* 기본적으로 360px 차지, flex-grow에 의해 
     한 개의 article이 들어갈 공간이 360px보다 크거나 작아지면 
-    그 크기에 맞게 자동 조절*/
+    그 크기에 맞게 자동 조절
+    
+    -> flex-basis로 구현하는 것이 적절 */
     width: 360px;
     flex-grow: 1;
     padding-bottom: 30px;
@@ -31,16 +32,18 @@ article {
 }
 
 .metadata {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: flex-start; */
+
+    /* 웹은 기본적으로 bottom 정렬, flex는 기본적으로 top 정렬로 바꿔줌 */
     width: 100%;
     margin-top: 10px;
 }
 
-.metadata-left {
+/* .metadata-left {
     display: flex;
-}
+} */
 
 .vid-profile {
     width: 36px;

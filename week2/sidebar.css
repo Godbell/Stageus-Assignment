@@ -7,12 +7,16 @@ nav {
 
 .side-button {
     display: flex;
+
+    /* 각각 baseline(정렬의 기준이 되는 방향)의 수직, 수평 방향 정렬 방법 설정 */
     align-items: center;
     justify-content: center;
 
     color: white;
     font-size: 7px;
     text-align: center;
+
+    /* 가장 흔하게 사용하는 기본 width, height 지정 벙삭은 width=...% height=fit-content */
     height: 80px;
 
     padding: 2px;

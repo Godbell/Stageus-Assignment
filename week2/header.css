@@ -137,6 +137,6 @@ header {
 #top-section-middle {
     /* 검색바 최대크기지정, flex box 사이 공간 없을 때부터 줄어들도록
     width 100%로 설정 */
-    width: 100%;
+    /* width: 100%; */
     max-width: 500px;
 }
