@@ -36,7 +36,8 @@ article {
     /* justify-content: space-between; */
     /* align-items: flex-start; */
 
-    /* 웹은 기본적으로 bottom 정렬, flex는 기본적으로 top 정렬로 바꿔줌 */
+    /* 웹은 기본적으로 bottom 정렬, flex는 기본적으로 top 정렬로 바꿔줌
+    고정사이즈는 보통 제일 말단 자식에게 줌 */
     width: 100%;
     margin-top: 10px;
 }
