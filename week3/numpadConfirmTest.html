@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="baseball.css">
 </head>
 <body>
-    <div id="bg-filter"></div>
     <main>
         <h1 class="text" style="color: gray">Decide your combination</h1>
         <div style="border-bottom: none" class="number-input">
@@ -17,8 +16,10 @@
             <span class="text large-number">7</span>
             <span class="text large-number">4</span>
         </div>
-        <button class="text confirm">Confirm</button>
-        <button class="text cancel">No, I've changed my mind</button>
+        <div id="confirmation-container">
+            <button id="confirm" class="text">Confirm</button>
+            <button id="cancel" class="text">No, I've changed my mind</button>
+        </div>
     </main>
 </body>
 </html>

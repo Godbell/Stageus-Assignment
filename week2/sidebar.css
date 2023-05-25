@@ -16,7 +16,8 @@ nav {
     font-size: 7px;
     text-align: center;
 
-    /* 가장 흔하게 사용하는 기본 width, height 지정 벙삭은 width=...% height=fit-content */
+    /* 가장 흔하게 사용하는 기본 width, height 지정 벙삭은 width=...% height=fit-content 
+    높이를 정 조절하고 싶으면 내부에 있는 자식에게 padding을 주는 방식으로 가는 게 나았음 */
     height: 80px;
 
     padding: 2px;

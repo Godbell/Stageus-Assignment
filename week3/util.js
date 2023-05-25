@@ -1,3 +1,7 @@
+function page() {
+    return document.getElementsByTagName('main')[0];
+}
+
 function parseHTML(elementString) {
     const container = document.createElement('template');
     container.innerHTML = elementString;
@@ -37,7 +41,7 @@ function hide(element, delay = 20) {
 function hideAll(elements, delay = 20) {
     return new Promise((resolve) => {
         elements.foreach(element => {
-            // TODO: implement hiding
+            
         })
     })
 }
