@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baseball by Godbell</title>
+
+    <link rel="stylesheet" type="text/css" href="../baseball.css" />
+  </head>
+  <body>
+    <main>
+      <div id="decision-notice" class="fade">
+        <h1 id="decision-notice-text" class="text">
+          Decide your Secret Number
+        </h1>
+        <div class="help">
+          ?
+          <span id="help-tooltip" class="tooltip">
+            Secret Number must contain 3 numbers without duplication.
+          </span>
+        </div>
+      </div>
+      <div id="input-field" class="fade">
+        <span class="text large-number">3</span>
+        <span class="text large-number">7</span>
+        <span class="text large-number">4</span>
+        <span id="toast-tooltip" class="tooltip fade">
+          Secret Number must contain 3 numbers without duplication.
+        </span>
+      </div>
+      <div id="numpad" class="fade">
+        <div class="numpad-row">
+          <button class="numpad-button number-button">1</button>
+          <button class="numpad-button number-button">2</button>
+          <button class="numpad-button number-button">3</button>
+        </div>
+        <div class="numpad-row">
+          <button class="numpad-button number-button">4</button>
+          <button class="numpad-button number-button">5</button>
+          <button class="numpad-button number-button">6</button>
+        </div>
+        <div class="numpad-row">
+          <button class="numpad-button number-button">7</button>
+          <button class="numpad-button number-button">8</button>
+          <button class="numpad-button number-button">9</button>
+        </div>
+        <div class="numpad-row">
+          <button id="clear-button" class="numpad-button">C</button>
+          <button id="erase-button" class="numpad-button"><</button>
+          <button id="enter-button" class="numpad-button">↵</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
