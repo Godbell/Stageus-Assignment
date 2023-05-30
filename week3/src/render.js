@@ -143,7 +143,7 @@ function renderGuessProcessNoticeTransparent(guess) {
   const id = "guess-process-notice";
   render(
     `<h1 id="${id}" class="text fade">
-  You guess ${guess.join()}...
+  You guess <span class="large-number">${guess.join("")}</span>...
 </h1>`
   );
 
@@ -156,7 +156,7 @@ function renderGuessResultNoticeTransparent(result) {
   const id = "guess-result-notice";
   render(
     `<h1 id="${id}" class="text fade">
-  It's ${result[0]} Strikes and ${result[1]} Balls
+  It's <span class="large-number">${result[0]}</span> Strikes and <span class="large-number">${result[1]}</span> Balls
 </h1>`
   );
 
@@ -191,7 +191,7 @@ function renderOpponentGuessProcessNoticeTransparent(guess) {
   const id = "opponent-guess-process-notice";
   render(
     `<h1 id="${id}" class="text fade">
-  Your opponent guesses ${guess.join()}...
+  Your opponent guesses <span class="large-number">${guess.join("")}</span>...
 </h1>`
   );
 
@@ -245,7 +245,7 @@ function renderGuessTimesNoticeTransparent(guessTimes) {
 function renderPlayAgainButton() {
   const id = "play-again";
   render(
-    `<button id="${id}" class="text fade fade" onclick="gameStartEvent()">
+    `<button id="${id}" class="text fade" onclick="gameStartEvent()">
   Play Again?
 </button>`
   );

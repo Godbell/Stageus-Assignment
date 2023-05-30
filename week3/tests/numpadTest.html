@@ -14,18 +14,22 @@
         <h1 id="decision-notice-text" class="text">
           Decide your Secret Number
         </h1>
-        <div class="help">
+        <span class="help">
           ?
           <span id="help-tooltip" class="tooltip">
             Secret Number must contain 3 numbers without duplication.
           </span>
-        </div>
+        </span>
       </div>
       <div id="input-field" class="fade">
         <span class="text large-number">3</span>
         <span class="text large-number">7</span>
         <span class="text large-number">4</span>
-        <span id="toast-tooltip" class="tooltip fade">
+        <span
+          id="toast-tooltip"
+          class="tooltip fade"
+          style="visibility: visible"
+        >
           Secret Number must contain 3 numbers without duplication.
         </span>
       </div>
@@ -51,6 +55,7 @@
           <button id="enter-button" class="numpad-button">↵</button>
         </div>
       </div>
+      <span id="show-log" class="text fade">Show Log</span>
     </main>
   </body>
 </html>

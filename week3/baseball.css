@@ -159,12 +159,12 @@ button:hover {
 
 .help:hover .tooltip {
   visibility: visible;
-  width: 260px;
+  width: 20rem;
   top: 200%;
 }
 
 #toast-tooltip {
-  width: 500px;
+  width: 30rem;
   top: 120%;
 }
 
@@ -188,13 +188,19 @@ button:hover {
   font-family: Inter;
   font-size: 1rem;
   font-weight: 200;
-  width: 50px;
+  width: 3.2rem;
   aspect-ratio: 1;
   cursor: pointer;
 }
 
 .numpad-button:hover {
   color: darkgray;
+}
+
+#show-log {
+  margin-top: 4rem;
+  font-size: 1.2rem;
+  border-bottom: 1px dotted white;
 }
 
 #confirm-menu {
@@ -228,7 +234,7 @@ button:hover {
 }
 
 #play-again {
-  margin-top: 100px;
+  margin-top: 3rem;
   font-size: 4rem;
   border-bottom: 1px solid white;
 }
