@@ -1,0 +1,72 @@
+:root {
+  --size-multiplier: 5;
+  --shelf-width: calc(192px * var(--size-multiplier));
+  --shelf-height: calc(80px * var(--size-multiplier));
+  --shelf-pos-y: 75px;
+  --gameboy-small-width: calc(23px * var(--size-multiplier));
+  --dslite-small-width: calc(40px * var(--size-multiplier));
+  --switch-small-width: calc(56px * var(--size-multiplier));
+  --gap: 20px;
+}
+
+body {
+  background-image: url('img/bg/title.png');
+  position: relative;
+}
+
+#shelf {
+  width: var(--shelf-width);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--shelf-pos-y);
+  bottom: 0;
+  margin: auto;
+}
+
+#icon-frame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  width: fit-content;
+  height: fit-content;
+
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: var(--gap);
+}
+
+#gameboy-small {
+  width: var(--gameboy-small-width);
+}
+
+#dslite-small {
+  width: var(--dslite-small-width);
+}
+
+#switch-small {
+  width: var(--switch-small-width);
+}
+
+#choice-notice {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+
+  background-color: #000000bb;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  border-radius: 40px;
+  text-align: center;
+}

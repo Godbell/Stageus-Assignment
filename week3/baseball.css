@@ -1,21 +1,21 @@
 @font-face {
   font-family: Italiana;
-  src: url("./fonts/Italiana-Regular.ttf");
+  src: url('./fonts/Italiana-Regular.ttf');
 }
 
 @font-face {
   font-family: Inter;
-  src: url("./fonts/Inter-VariableFont_slnt\,wght.ttf");
+  src: url('./fonts/Inter-VariableFont_slnt\,wght.ttf');
 }
 
 @font-face {
   font-family: NotoSans;
-  src: url("./fonts/NotoSans-Thin.ttf");
+  src: url('./fonts/NotoSans-Thin.ttf');
 }
 
 @font-face {
   font-family: NotoSerif;
-  src: url("./fonts/NotoSerif-Regular.ttf");
+  src: url('./fonts/NotoSerif-Regular.ttf');
 }
 
 * {
