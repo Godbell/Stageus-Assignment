@@ -52,66 +52,6 @@ function createChips() {
       chipImage.src = game.chip_image_location;
     };
     chipImage.draggable = true;
-    //*/
-    /*
-    chipImage.onmousedown = (e) => {
-      console.log('mousedown x: ' + e.offsetX + ', y: ' + e.offsetY);
-      currentGameChip = chipImage;
-      currentGameChip.style.position = 'fixed';
-      currentGameChip.style.zIndex = '100';
-      mousedown = true;
-
-      let gameChipRect = currentGameChip.getBoundingClientRect();
-      mouseCurrentX = gameChipRect.left;
-      mouseCurrentY = gameChipRect.top;
-    };
-    chipImage.onmousemove = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (currentGameChip == null || !mousedown) return;
-
-      console.log('x: ' + e.offsetX + ', y: ' + e.offsetY);
-      if (mouseOffsetX == 0 && mouseOffsetY == 0) {
-        mouseOffsetX = e.clientX - mouseCurrentX;
-        mouseOffsetY = e.clientY - mouseCurrentY;
-      }
-      currentGameChip.style.top = e.clientY - mouseOffsetY + 'px';
-      currentGameChip.style.left = e.clientX - mouseOffsetX + 'px';
-    };
-    chipImage.onmouseup = (e) => {
-      console.log('mouseup x: ' + e.offsetX + ', y: ' + e.offsetY);
-      currentGameChip.style.position = 'static';
-      currentGameChip.style.top = 'inherit';
-      currentGameChip.style.left = 'inherit';
-      currentGameChip = null;
-
-      mousedown = false;
-      mouseCurrentX = 0;
-      mouseCurrentY = 0;
-      mouseOffsetX = 0;
-      mouseOffsetY = 0;
-    };
-    chipImage.addEventListener('mouseenter', () => {
-      chipImage.src = game.chip_highlighted_image_location;
-    });
-    chipImage.addEventListener('mouseleave', (e) => {
-      chipImage.src = game.chip_image_location;
-      if (!mousedown) return;
-
-      console.log('mouseup x: ' + e.offsetX + ', y: ' + e.offsetY);
-      currentGameChip.style.position = 'static';
-      currentGameChip.style.top = 'inherit';
-      currentGameChip.style.left = 'inherit';
-      currentGameChip = null;
-
-      mousedown = false;
-      mouseCurrentX = 0;
-      mouseCurrentY = 0;
-      mouseOffsetX = 0;
-      mouseOffsetY = 0;
-    });
-    */
     conveyer.appendChild(chipImage);
   }
 }
@@ -205,7 +145,7 @@ function createPuzzlePieces() {
         piece.draggable = true;
         piece.className = 'puzzle-piece';
         piece.dataset.pieceNumber = puzzle.row * i + j;
-        piece.style.aspectRatio = currentGame.title_image_aspectRatio;
+        piece.style.aspectRatio = 1;
 
         if (puzzle.console_screen_width != null) {
           piece.style.width =
