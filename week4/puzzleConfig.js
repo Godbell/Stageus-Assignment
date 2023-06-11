@@ -13,8 +13,10 @@ const puzzleConfig = {
         chip_highlighted_image_location:
           'img/chip/chip_gameboy_pokemon_highlighted.png',
         title_image_location: 'img/game_title/gameboy_pokemon.png',
-        title_image_width: 623,
-        title_image_height: 477,
+        title_complete_image_location:
+          'img/game_title/gameboy_pokemon_complete.gif',
+        title_image_width: 461,
+        title_image_height: 461,
       },
     ],
   },
@@ -32,27 +34,33 @@ const puzzleConfig = {
         chip_image_location: 'img/chip/chip_dslite_kirby.png',
         chip_highlighted_image_location:
           'img/chip/chip_dslite_kirby_highlighted.png',
-        title_image_location: '',
-        title_image_width: 9999,
-        title_image_height: 9999,
+        title_image_location: 'img/game_title/dslite_kirby.png',
+        title_complete_image_location:
+          'img/game_title/dslite_kirby_complete.gif',
+        title_image_width: 429,
+        title_image_height: 322,
       },
       {
         name: 'MARIO',
         chip_image_location: 'img/chip/chip_dslite_mario.png',
         chip_highlighted_image_location:
           'img/chip/chip_dslite_mario_highlighted.png',
-        title_image_location: '',
-        title_image_width: 9999,
-        title_image_height: 9999,
+        title_image_location: 'img/game_title/dslite_mario.png',
+        title_complete_image_location:
+          'img/game_title/dslite_mario_complete.gif',
+        title_image_width: 640,
+        title_image_height: 360,
       },
       {
         name: 'POKEMON',
         chip_image_location: 'img/chip/chip_dslite_pokemon.png',
         chip_highlighted_image_location:
           'img/chip/chip_dslite_pokemon_highlighted.png',
-        title_image_location: '',
-        title_image_width: 9999,
-        title_image_height: 9999,
+        title_image_location: 'img/game_title/dslite_pokemon.png',
+        title_complete_image_location:
+          'img/game_title/dslite_pokemon_complete.gif',
+        title_image_width: 189,
+        title_image_height: 189,
       },
     ],
   },
@@ -69,8 +77,10 @@ const puzzleConfig = {
         chip_highlighted_image_location:
           'img/chip/chip_switch_anicross_highlighted.png',
         title_image_location: 'img/game_title/switch_anicross.png',
-        title_image_width: 2557,
-        title_image_height: 1147,
+        title_complete_image_location:
+          'img/game_title/switch_anicross_complete.gif',
+        title_image_width: 654,
+        title_image_height: 327,
       },
     ],
   },

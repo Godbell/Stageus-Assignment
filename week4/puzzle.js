@@ -1,14 +1,9 @@
 const consoleType = getURLParam('console');
 const puzzle = puzzleConfig[consoleType];
-const puzzleState = Array(puzzle.row * puzzle.column).fill(false);
+let puzzleState = Array(puzzle.row * puzzle.column).fill(false);
 let currentGame = null;
 let currentGameChip = null;
 let currentPiece = null;
-let mousedown = false;
-let mouseOffsetX = 0;
-let mouseOffsetY = 0;
-let mouseCurrentX = 0;
-let mouseCurrentY = 0;
 
 initStage();
 createChips();
@@ -114,8 +109,24 @@ function createPuzzleElement() {
       pieceHolder.className = 'puzzle-piece-holder';
       pieceHolder.dataset.pieceNumber = puzzle.column * i + j;
 
-      pieceHolder.ondragover = (e) => {};
-      pieceHolder.ondrop = (e) => {};
+      pieceHolder.ondragover = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      };
+      pieceHolder.ondrop = (e) => {
+        if (currentPiece == null) return;
+
+        if (pieceHolder.childNodes.length == 0) {
+          pieceHolder.appendChild(currentPiece);
+        } else {
+          changePiece(
+            currentPiece.dataset.pieceNumber,
+            pieceHolder.children[0].dataset.pieceNumber
+          );
+        }
+
+        checkState();
+      };
 
       puzzleElement.appendChild(pieceHolder);
     }
@@ -149,9 +160,24 @@ function createPuzzlePieces() {
       for (let j = 0; j < puzzle.column; j++) {
         const pieceHolder = document.createElement('div');
         pieceHolder.className = 'puzzle-piece-holder';
-        pieceHolder.dataset.pieceNumber = puzzle.row * i + j;
-        pieceHolder.ondragover = (e) => {};
-        pieceHolder.ondrop = (e) => {};
+        pieceHolder.ondragover = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        };
+        pieceHolder.ondrop = (e) => {
+          if (currentPiece == null) return;
+
+          if (pieceHolder.childNodes.length == 0) {
+            pieceHolder.appendChild(currentPiece);
+          } else {
+            changePiece(
+              currentPiece.dataset.pieceNumber,
+              pieceHolder.children[0].dataset.pieceNumber
+            );
+          }
+
+          checkState();
+        };
 
         if (puzzle.console_screen_width != null) {
           pieceHolder.style.width =
@@ -178,7 +204,7 @@ function createPuzzlePieces() {
         piece.height = currentGame.title_image_height / puzzle.row;
         piece.draggable = true;
         piece.className = 'puzzle-piece';
-        piece.dataset.pieceNumber = puzzle.row * i + j;
+        piece.dataset.pieceNumber = puzzle.column * i + j;
         piece.style.aspectRatio = 1;
 
         piece.ondragstart = () => {
@@ -205,5 +231,131 @@ function createPuzzlePieces() {
         );
       }
     }
+
+    shufflePieces();
   };
+}
+
+function checkState() {
+  for (let pieceHolderElement of document.querySelectorAll(
+    '.puzzle-piece-holder[data-piece-number]'
+  )) {
+    const isHolderEmpty = pieceHolderElement.childNodes.length == 0;
+    const pieceHolderNumber = parseInt(pieceHolderElement.dataset.pieceNumber);
+
+    if (isHolderEmpty) {
+      puzzleState[pieceHolderNumber] = false;
+    } else if (
+      pieceHolderElement.children[0].dataset.pieceNumber == pieceHolderNumber
+    ) {
+      puzzleState[pieceHolderNumber] = true;
+    } else {
+      puzzleState[parseInt(pieceHolderNumber)] = false;
+    }
+  }
+
+  if (!puzzleState.includes(false)) {
+    victory();
+  }
+}
+
+function shufflePieces() {
+  const numberOfPieces = puzzleState.length;
+  for (let i = 0; i < numberOfPieces - 1; i++) {
+    const randomPieceNumber = randomInteger(0, i + 1);
+    changePiece(i, randomPieceNumber);
+  }
+}
+
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function changePiece(pieceNumber1, pieceNumber2) {
+  const pieceElement1 = document.querySelector(
+    '.puzzle-piece[data-piece-number="' + pieceNumber1 + '"]'
+  );
+  const pieceElement2 = document.querySelector(
+    '.puzzle-piece[data-piece-number="' + pieceNumber2 + '"]'
+  );
+
+  const pieceHolder1 = pieceElement1.parentNode;
+  const pieceHolder2 = pieceElement2.parentNode;
+
+  pieceHolder1.appendChild(pieceElement2);
+  pieceHolder2.appendChild(pieceElement1);
+}
+
+function victory() {
+  const puzzleElement = document.getElementById('puzzle-' + consoleType);
+  puzzleElement.style.backgroundColor = 'white';
+  const completePuzzleImage = document.createElement('img');
+
+  fadeOutAll(
+    document.querySelectorAll(
+      '#puzzle-' + consoleType + ' > .puzzle-piece-holder'
+    )
+  )
+    .then(() => {
+      for (let pieceHolder of Array.from(puzzleElement.childNodes)) {
+        pieceHolder.remove();
+      }
+      puzzleElement.classList.remove(consoleType + '-grid');
+
+      completePuzzleImage.id = 'complete-puzzle-image';
+      completePuzzleImage.src = currentGame.title_complete_image_location;
+      puzzleElement.appendChild(completePuzzleImage);
+    })
+    .then(() => fadeIn(completePuzzleImage));
+}
+
+function fadeIn(element, delay) {
+  return new Promise((resolve) => {
+    const onAnimationEnd = () => {
+      element.removeEventListener('transitionend', onAnimationEnd);
+      resolve();
+    };
+
+    element.addEventListener('transitionend', onAnimationEnd);
+    wait(delay).then(() => {
+      element.style.opacity = 1;
+    });
+  });
+}
+
+function fadeOutAll(elements, delay = 20) {
+  let promises = [];
+  for (let element of elements) {
+    promises.push(
+      new Promise((resolve) => {
+        fadeOut(element, delay).then(resolve);
+      })
+    );
+  }
+
+  return new Promise((resolve) => {
+    Promise.all(promises).then(resolve);
+  });
+}
+
+function fadeOut(element, delay = 20) {
+  return new Promise((resolve) => {
+    const onAnimationEnd = () => {
+      element.removeEventListener('transitionend', onAnimationEnd);
+      resolve();
+    };
+
+    element.addEventListener('transitionend', onAnimationEnd);
+    wait(delay).then(() => {
+      element.style.opacity = 0;
+    });
+  });
+}
+
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(ms);
+    }, ms);
+  });
 }

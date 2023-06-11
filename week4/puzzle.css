@@ -131,6 +131,11 @@ body {
   background-color: #ffffff3f;
 }
 
+.puzzle-piece-holder {
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
+
 .puzzle-piece {
   width: 100%;
 }
@@ -148,4 +153,12 @@ body {
 .switch-chip {
   width: var(--switch-chip-width);
   flex: 1;
+}
+
+#complete-puzzle-image {
+  width: 100%;
+  height: 100%;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  opacity: 0;
 }
