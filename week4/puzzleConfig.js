@@ -1,10 +1,11 @@
+const CONSOLE_SIZE = '70vmin';
 const puzzleConfig = {
   gameboy: {
     row: 4,
     column: 4,
     console_image_location: 'img/console/gameboy.png',
-    console_screen_width: '27.273vmin', // 80vmin(frame) * 100%(console) * 50%(puzzle) * 120 / 176 (aspectRatio)
-    console_screen_height: null,
+    console_screen_width: null,
+    console_screen_height: CONSOLE_SIZE + ' * 0.3636',
     games: [
       {
         name: 'POKEMON',
@@ -24,7 +25,7 @@ const puzzleConfig = {
     console_image_semiopened_location: 'img/console/dslite_semiopened.png',
     console_image_opened_location: 'img/console/dslite.png',
     console_screen_width: null,
-    console_screen_height: '29.088', // 80vmin(frame) * 100%(console) * 36.36%(puzzle)
+    console_screen_height: CONSOLE_SIZE + ' * 0.3636', //'29.088vmin', // 80vmin(frame) * 100%(console) * 36.36%(puzzle)
     games: [
       {
         name: 'KIRBY',
@@ -59,7 +60,7 @@ const puzzleConfig = {
     row: 4,
     column: 8,
     console_image_location: 'img/console/switch.png',
-    console_screen_width: '55.056vmin', // 80vmin(frame) * 100%(console) * 68.82%(puzzle)
+    console_screen_width: CONSOLE_SIZE + ' * 0.6882', // 80vmin(frame) * 100%(console) * 68.82%(puzzle)
     console_screen_height: null,
     games: [
       {

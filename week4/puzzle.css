@@ -5,13 +5,17 @@
   --chip-size-multiplier: 1.5;
   */
 
+  --console-size: 70vmin;
+
   --gameboy-chip-width: 15vmin;
   --dslite-chip-width: 10vmin;
   --switch-chip-width: 10vmin;
   --chip-size-multiplier: 1.5;
 
-  --gameboy-puzzle-width: 50%;
-  --dslite-puzzle-height: 36.36%;
+  --gameboy-puzzle-width: 36.36%;
+  --gameboy-puzzle-height: var(--gameboy-puzzle-width);
+  --dslite-puzzle-width: 36.36%;
+  --dslite-puzzle-height: var(--dslite-puzzle-width);
   --switch-puzzle-width: 68.82%;
   --switch-puzzle-height: 76.19%;
 
@@ -22,7 +26,7 @@
   --switch-puzzle-rows: 4;
   --switch-puzzle-columns: 8;
 
-  --gameboy-aspect-ratio: 120 / 176;
+  --gameboy-aspect-ratio: 128 / 176;
   --dslite-aspect-ratio: 1;
   --switch-aspect-ratio: 186 / 84;
 }
@@ -33,9 +37,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5vmin;
 }
 
-#chip-container {
+#conveyer {
   flex-basis: 20vmin;
 
   display: flex;
@@ -55,17 +60,17 @@ body {
 
 #frame-gameboy {
   aspect-ratio: var(--gameboy-aspect-ratio);
-  height: 80vmin;
+  height: var(--console-size);
 }
 
 #frame-dslite {
   aspect-ratio: var(--dslite-aspect-ratio);
-  height: 80vmin;
+  height: var(--console-size);
 }
 
 #frame-switch {
   aspect-ratio: var(--switch-aspect-ratio);
-  width: 80vmin;
+  width: var(--console-size);
 }
 
 #console {
@@ -78,44 +83,56 @@ body {
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
 }
 
 #puzzle-gameboy {
   aspect-ratio: 1;
-  grid-template-columns: repeat(var(--gameboy-puzzle-columns), 1fr);
-  grid-template-rows: repeat(var(--gameboy-puzzle-rows), 25%);
   grid-auto-rows: auto;
-  width: var(--gameboy-puzzle-width);
+  height: var(--gameboy-puzzle-height);
   margin-top: 0;
   margin-bottom: 64.1%;
 }
 
+.gameboy-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--gameboy-puzzle-columns), 1fr);
+  grid-template-rows: repeat(var(--gameboy-puzzle-rows), 25%);
+  aspect-ratio: 1;
+}
+
 #puzzle-dslite {
   aspect-ratio: 1;
-  grid-template-columns: repeat(var(--dslite-puzzle-columns), 1fr);
-  grid-template-rows: repeat(var(--dslite-puzzle-rows), 25%);
   width: var(--dslite-puzzle-height);
   margin-top: 0;
   margin-bottom: 48.8%;
 }
 
-.puzzle-switch {
-  grid-template-columns: repeat(var(--switch-puzzle-columns), 1fr);
-  grid-template-rows: repeat(var(--switch-puzzle-rows), 25%);
-  grid-auto-rows: auto;
-  width: var(--switch-puzzle-width);
-  height: var(--switch-puzzle-height);
-  margin-top: 0;
-  margin-bottom: 0;
+.dslite-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--dslite-puzzle-columns), 1fr);
+  grid-template-rows: repeat(var(--dslite-puzzle-rows), 25%);
+  aspect-ratio: 1;
 }
 
-.puzzle-piece-holder:hover {
+#puzzle-switch {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: var(--switch-puzzle-width);
+  height: var(--switch-puzzle-height);
+}
+
+.switch-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--switch-puzzle-columns), 12.5%);
+  grid-template-rows: repeat(var(--switch-puzzle-rows), 25%);
+}
+
+.frame .puzzle-piece-holder:hover {
   background-color: #ffffff3f;
 }
 
-.puzzle-piece-holder > .puzzle-piece {
-  height: 100%;
+.puzzle-piece {
+  width: 100%;
 }
 
 .gameboy-chip {

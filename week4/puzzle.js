@@ -101,7 +101,7 @@ function initGame() {
 function createPuzzleElement() {
   const puzzleElement = document.createElement('div');
   puzzleElement.id = 'puzzle-' + consoleType;
-  puzzleElement.className = 'puzzle';
+  puzzleElement.className = 'puzzle ' + consoleType + '-grid';
 
   const frameElement = document.getElementById('frame-' + consoleType);
   const gameConsoleElement = document.getElementById('console');
@@ -112,7 +112,7 @@ function createPuzzleElement() {
     for (let j = 0; j < puzzle.column; j++) {
       const pieceHolder = document.createElement('div');
       pieceHolder.className = 'puzzle-piece-holder';
-      pieceHolder.dataset.pieceNumber = puzzle.row * i + j;
+      pieceHolder.dataset.pieceNumber = puzzle.column * i + j;
 
       pieceHolder.ondragover = (e) => {};
       pieceHolder.ondrop = (e) => {};
@@ -129,16 +129,50 @@ function removeChips() {
   for (let chip of chips) {
     chip.remove();
   }
+  document.getElementById('conveyer').remove();
 }
 
 function createPuzzlePieces() {
-  const conveyer = document.getElementById('conveyer');
+  const conveyer = document.createElement('div');
+  conveyer.id = 'piece-conveyer';
+  conveyer.className = consoleType + '-grid';
+  document.body.insertBefore(
+    conveyer,
+    document.getElementsByClassName('frame')[0]
+  );
+
   const title = new Image();
   title.src = currentGame.title_image_location;
 
   title.onload = () => {
     for (let i = 0; i < puzzle.row; i++) {
       for (let j = 0; j < puzzle.column; j++) {
+        const pieceHolder = document.createElement('div');
+        pieceHolder.className = 'puzzle-piece-holder';
+        pieceHolder.dataset.pieceNumber = puzzle.row * i + j;
+        pieceHolder.ondragover = (e) => {};
+        pieceHolder.ondrop = (e) => {};
+
+        if (puzzle.console_screen_width != null) {
+          pieceHolder.style.width =
+            'calc(' + puzzle.console_screen_width + ' / ' + puzzle.column + ')';
+          conveyer.style.height =
+            'calc(' +
+            puzzle.console_screen_width +
+            ' * ' +
+            puzzle.row / puzzle.column +
+            ')';
+        } else {
+          pieceHolder.style.height =
+            'calc(' + puzzle.console_screen_height + ' / ' + puzzle.row + ')';
+          conveyer.style.width =
+            'calc(' +
+            puzzle.console_screen_height +
+            ' * ' +
+            puzzle.column / puzzle.row +
+            ')';
+        }
+
         const piece = document.createElement('canvas');
         piece.width = currentGame.title_image_width / puzzle.column;
         piece.height = currentGame.title_image_height / puzzle.row;
@@ -146,14 +180,6 @@ function createPuzzlePieces() {
         piece.className = 'puzzle-piece';
         piece.dataset.pieceNumber = puzzle.row * i + j;
         piece.style.aspectRatio = 1;
-
-        if (puzzle.console_screen_width != null) {
-          piece.style.width =
-            'calc(' + puzzle.console_screen_width + ' / ' + puzzle.column + ')';
-        } else {
-          piece.style.height =
-            'calc(' + puzzle.console_screen_height + ' / ' + puzzle.row + ')';
-        }
 
         piece.ondragstart = () => {
           currentPiece = piece;
@@ -163,7 +189,8 @@ function createPuzzlePieces() {
           currentPiece = null;
         };
 
-        conveyer.appendChild(piece);
+        pieceHolder.appendChild(piece);
+        conveyer.appendChild(pieceHolder);
         const canvasContext = piece.getContext('2d');
         canvasContext.drawImage(
           title,
@@ -180,5 +207,3 @@ function createPuzzlePieces() {
     }
   };
 }
-
-function getImage(imgLocation) {}
